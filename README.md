@@ -2,6 +2,14 @@
 
 A simple package for generating API responses in Laravel.
 
+## Installation
+
+You can install the package via composer:
+
+```
+composer require mrgarest/echo-api
+```
+
 # Examples
 
 Below are some examples using the methods for different responses.

@@ -3,8 +3,8 @@
 namespace MrGarest\EchoApi;
 
 use Illuminate\Http\JsonResponse;
-use MrGarest\EchoApi\Exceptions as Ex;
 use Symfony\Component\HttpFoundation\Response;
+use MrGarest\EchoApi\Exceptions as Ex;
 
 class EchoApi
 {
