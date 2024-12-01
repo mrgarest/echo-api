@@ -109,7 +109,7 @@ class EchoApi
         $error = isset($errorResponse[$code]) ? $errorResponse[$code] : null;
         if ($error === null) throw new Ex\ErrorCodeNotFoundException();
 
-        $httpHeaders = static::getTernaryData($data, $error['data']);
+        if (isset($error['data'])) $data = static::getTernaryData($data, $error['data']);
         $httpHeaders = static::getTernaryData($httpHeaders, $error['http']['headers']);
 
         return static::error($code, $error['message'], $data, $error['http']['code'], $httpHeaders);
