@@ -3,7 +3,7 @@
   "description": "A simple package for generating API responses in Laravel",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/mrgarest/echo-api",
   "keywords": [
     "garest",
@@ -16,7 +16,6 @@
   "authors": [
     {
       "name": "Garest",
-      "email": "olehhoncharenko98@gmail.com",
       "homepage": "https://github.com/mrgarest"
     }
   ],

@@ -17,7 +17,7 @@ class EchoApi
      *
      * @return JsonResponse
      */
-    public static function success(array|null $data = null, int $httpStatus = Response::HTTP_OK, array|null $httpHeaders = null): JsonResponse
+    public static function success(?array $data = null, int $httpStatus = Response::HTTP_OK, ?array $httpHeaders = null): JsonResponse
     {
         $response = [
             'success' => true,
@@ -38,7 +38,7 @@ class EchoApi
      * 
      * @return JsonResponse
      */
-    public static function error(int|string $code, string|null $message, array|null $data = null, int $httpStatus = Response::HTTP_BAD_REQUEST, array|null $httpHeaders = null): JsonResponse
+    public static function error(int|string $code, ?string $message, ?array $data = null, int $httpStatus = Response::HTTP_BAD_REQUEST, ?array $httpHeaders = null): JsonResponse
     {
         $response = [
             'success' => false,
@@ -67,7 +67,7 @@ class EchoApi
      * @return JsonResponse
      * @throws Ex\HttpStatusCodeExistException
      */
-    public static function httpError(int $httpStatus, array|null $data = null, $httpHeaders = null): JsonResponse
+    public static function httpError(int $httpStatus, ?array $data = null, $httpHeaders = null): JsonResponse
     {
         if (!isset(Response::$statusTexts[$httpStatus])) throw new Ex\HttpStatusCodeExistException();
         return static::error($httpStatus, Response::$statusTexts[$httpStatus], $data, $httpStatus, $httpHeaders);
@@ -80,7 +80,7 @@ class EchoApi
      *
      * @return JsonResponse|null
      */
-    public static function validatorError(\Illuminate\Validation\Validator $validator): JsonResponse|null
+    public static function validatorError(\Illuminate\Validation\Validator $validator): ?JsonResponse
     {
         if (!$validator->fails()) return null;
         $validatorErrors = [];
@@ -103,7 +103,7 @@ class EchoApi
      * @return JsonResponse
      * @throws Ex\ErrorCodeNotFoundException
      */
-    public static function findError(int|string $code, array|null $data = null, array|null $httpHeaders = null): JsonResponse
+    public static function findError(int|string $code, ?array $data = null, ?array $httpHeaders = null): JsonResponse
     {
         $errorResponse = config('echo-api.errors');
         $error = isset($errorResponse[$code]) ? $errorResponse[$code] : null;
@@ -124,7 +124,7 @@ class EchoApi
      * 
      * @return JsonResponse
      */
-    protected static function asJson(array $data, int $httpStatus = Response::HTTP_OK, array|null $httpHeaders = null): JsonResponse
+    protected static function asJson(array $data, int $httpStatus = Response::HTTP_OK, ?array $httpHeaders = null): JsonResponse
     {
         return response()->json($data, $httpStatus, $httpHeaders === null ? [] : $httpHeaders);
     }
