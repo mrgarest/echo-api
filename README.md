@@ -1,5 +1,7 @@
 # EchoApi
 
+⚠️ THIS LIBRARY IS NO LONGER SUPPORTED AND WILL SOON BE REMOVED!!! 
+
 A simple package for generating API responses in Laravel.
 
 ## Installation
